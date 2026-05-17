@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block main_extra_class %}main-content--admin{% endblock %}
+
+{% block content %}
+<div class="admin-app-shell">
+  <aside class="admin-sidebar" aria-label="Admin navigation">
+    <div class="admin-sidebar-brand">
+      <a href="{{ url_for('admin.dashboard') }}" class="admin-sidebar-logo">ConnectX</a>
+      <span class="admin-sidebar-badge">Admin</span>
+    </div>
+    <nav class="admin-sidebar-nav">
+      <a href="{{ url_for('admin.dashboard') }}" class="admin-sidebar-link {% if request.endpoint == 'admin.dashboard' %}is-active{% endif %}">Dashboard</a>
+      <a href="{{ url_for('admin.users') }}" class="admin-sidebar-link {% if request.endpoint == 'admin.users' %}is-active{% endif %}">Users</a>
+      <a href="{{ url_for('admin.posts') }}" class="admin-sidebar-link {% if request.endpoint == 'admin.posts' %}is-active{% endif %}">Posts</a>
+      <a href="{{ url_for('admin.comments') }}" class="admin-sidebar-link {% if request.endpoint == 'admin.comments' %}is-active{% endif %}">Comments</a>
+      <a href="{{ url_for('admin.reports') }}" class="admin-sidebar-link {% if request.endpoint == 'admin.reports' %}is-active{% endif %}">Reports</a>
+    </nav>
+    <div class="admin-sidebar-footer">
+      <a href="{{ url_for('main.feed') }}" class="admin-sidebar-link-muted">← Back to app</a>
+    </div>
+  </aside>
+  <div class="admin-main">
+    {% block admin_body %}{% endblock %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}Admin — Dashboard — ConnectX{% endblock %}
+
+{% block admin_body %}
+<header class="admin-page-header">
+  <h1 class="admin-page-title">Admin Dashboard</h1>
+  <p class="admin-page-subtitle">Welcome, Admin. Snapshot of platform activity.</p>
+</header>
+
+<section class="admin-stat-grid" aria-label="Platform statistics">
+  <article class="admin-stat-card">
+    <p class="admin-stat-line">Total users: <strong>{{ user_count }}</strong></p>
+  </article>
+  <article class="admin-stat-card">
+    <p class="admin-stat-line">Total posts: <strong>{{ post_count }}</strong></p>
+  </article>
+  <article class="admin-stat-card">
+    <p class="admin-stat-line">Total comments: <strong>{{ comment_count }}</strong></p>
+  </article>
+</section>
+
+<section class="admin-quick-links">
+  <a href="{{ url_for('admin.users') }}" class="admin-pill-link">View all users</a>
+  <a href="{{ url_for('admin.posts') }}" class="admin-pill-link">View all posts</a>
+  <a href="{{ url_for('admin.comments') }}" class="admin-pill-link">View all comments</a>
+  <a href="{{ url_for('admin.reports') }}" class="admin-pill-link">Reports</a>
+</section>
+{% endblock %}
